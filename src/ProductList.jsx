@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./ProductList.css";
 import CartItem from "./CartItem";
-import  { addItem } from "./CartSlice"
+import { addItem } from "./CartSlice";
 import { useDispatch } from "react-redux";
 
 function ProductList({ onHomeClick }) {
@@ -300,6 +300,12 @@ function ProductList({ onHomeClick }) {
       ...prevState,
       [product.name]: true,
     }));
+  };
+
+  const calculateTotalQuantity = () => {
+    return CartItems
+      ? CartItems.reduce((total, item) => total + item.quantity, 0)
+      : 0;
   };
 
   return (
