@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeItem, updateQuantity } from "./CartSlice";
 import "./CartItem.css";
+import PropTypes from "prop-types";
+
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector((state) => state.cart.items);
@@ -35,7 +37,7 @@ const CartItem = ({ onContinueShopping }) => {
     dispatch(removeItem(item.name));
   };
 
-  const handleCheckoutShopping = (event) => {
+  const handleCheckoutShopping = () => {
     alert("Functionality to be added for future reference");
   };
 
@@ -102,6 +104,10 @@ const CartItem = ({ onContinueShopping }) => {
       </div>
     </div>
   );
+};
+
+CartItem.propTypes = {
+  onContinueShopping: PropTypes.func.isRequired,
 };
 
 export default CartItem;
